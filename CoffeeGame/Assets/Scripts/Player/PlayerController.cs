@@ -2,13 +2,18 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public bool canMove = true;
+    public bool canDash = true;
     public float moveSpeed = 5f;
+    public float dashDistance = 5f;
+
+    private bool isDashing = false;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -21,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [ProgressBar("currentHealth", "maxHealth", EColor.Red)]
     public float currentHealth;
     public float maxHealth = 100f;
-    
+
 
     public event Action<float, float> OnHealthChanged;
 
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
         controls.Gameplay.Pause.performed += ctx => GameManager.Instance.TogglePause();
+        controls.Gameplay.Dash.performed += ctx => Dash();
     }
     void Start()
     {
@@ -54,7 +60,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!canMove) return;
+        if (!canMove || isDashing) return;
         // Updates potion based on input
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
 
@@ -77,4 +83,33 @@ public class PlayerController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+    private void Dash()
+    {
+        if (isDashing || movement == Vector2.zero) return;
+
+        StartCoroutine(DashCoroutine());
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        isDashing = true;
+
+        Vector2 startPos = rb.position;
+        Vector2 targetPos = startPos + movement.normalized * dashDistance;
+
+        float dashTime = 0.15f; // Duration of the dash
+        float elapsed = 0f;
+
+        while (elapsed < dashTime)
+        {
+            rb.MovePosition(Vector2.Lerp(startPos, targetPos, elapsed / dashTime));
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        rb.MovePosition(targetPos);
+        isDashing = false;
+        
+    }
+
 }

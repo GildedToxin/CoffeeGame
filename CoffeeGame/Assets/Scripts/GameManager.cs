@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
                 print("Mouse is showing");
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
-
             }
         }
     }
