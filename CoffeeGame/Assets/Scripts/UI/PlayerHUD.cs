@@ -11,14 +11,14 @@ public class PlayerHUD : MonoBehaviour
     void Start()
     {
         player.OnHealthChanged += UpdateHealth;
-        inventory.OnMoneyChanged += UpateMoney;
+        inventory.OnMoneyChanged += UpdateMoney;
     }
 
     void UpdateHealth(float current, float max)
     {
         HealthBar.GetComponent<UnityEngine.UI.Slider>().value = current / max;
     }
-    void UpateMoney(int money)
+    void UpdateMoney(int money)
     {
         Money.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText($"{money}");
     }
@@ -26,13 +26,13 @@ public class PlayerHUD : MonoBehaviour
     void OnDestroy()
     {
         player.OnHealthChanged -= UpdateHealth;
-        inventory.OnMoneyChanged -= UpateMoney;
+        inventory.OnMoneyChanged -= UpdateMoney;
     }
     public void SetPlayer(PlayerController player, PlayerInventory inventory)
     {
         this.player = player;
         this.inventory = inventory;
         player.OnHealthChanged += UpdateHealth;
-        inventory.OnMoneyChanged += UpateMoney;
+        inventory.OnMoneyChanged += UpdateMoney;
     }
 }
