@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
+    public bool canMove = true;
     public float moveSpeed = 5f;
 
     private Rigidbody2D rb;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         // Subscribes to the Move action
         controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
-        controls.Gameplay.Pause.performed += ctx => GameManager.Instance.PauseGame();
+        controls.Gameplay.Pause.performed += ctx => GameManager.Instance.TogglePause();
     }
     void Start()
     {
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!canMove) return;
         // Updates potion based on input
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
 

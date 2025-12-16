@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public PlayerHUD hud;
+    public PauseMenu pauseMenu;
     public PlayerController player;
 
     public static bool IsPaused { get; private set; }
@@ -19,14 +21,17 @@ public class GameManager : MonoBehaviour
         this.player = player;
         hud.SetPlayer(player, inventory);
     }
+    public void TogglePause()
+    {
+        IsPaused = !IsPaused;
 
-    public void PauseGame()
-    {
-        IsPaused = true;
-        print("paused");
-    }
-    public void UnpauseGame()
-    {
-        IsPaused = false;
+        player.canMove = !IsPaused;
+
+        pauseMenu.gameObject.SetActive(IsPaused);
+        if (IsPaused)
+        {
+            EventSystem.current.SetSelectedGameObject(null); // clear old selection
+            EventSystem.current.SetSelectedGameObject(pauseMenu.resume.gameObject);
+        }
     }
 }
