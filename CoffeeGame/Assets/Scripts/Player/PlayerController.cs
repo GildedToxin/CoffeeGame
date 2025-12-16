@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     public event Action<float, float> OnHealthChanged;
 
+    [SerializeField]
+    private PlayerInventory inventory;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -33,10 +36,11 @@ public class PlayerController : MonoBehaviour
         // Subscribes to the Move action
         controls.Gameplay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
+        controls.Gameplay.Pause.performed += ctx => GameManager.Instance.PauseGame();
     }
     void Start()
     {
-        GameManager.Instance.RegisterPlayer(this);
+        GameManager.Instance.RegisterPlayer(this, inventory);
     }
     private void OnEnable()
     {

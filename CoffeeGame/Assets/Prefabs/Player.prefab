@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4174251043599334028}
   - component: {fileID: 2697207488742458918}
+  - component: {fileID: 8209783591126366004}
   - component: {fileID: 1128376579458014168}
   - component: {fileID: 5075734660968268894}
   - component: {fileID: 5626282453298800271}
@@ -50,6 +51,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 5
   animator: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 100
+  inventory: {fileID: 8209783591126366004}
+--- !u!114 &8209783591126366004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462830155607324262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8152e78a0e6c4f24598157bf8366f25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!50 &1128376579458014168
 Rigidbody2D:
   serializedVersion: 5

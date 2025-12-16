@@ -7,14 +7,26 @@ public class GameManager : MonoBehaviour
     public PlayerHUD hud;
     public PlayerController player;
 
+    public static bool IsPaused { get; private set; }
+
     void Awake()
     {
         Instance = this;
     }
 
-    public void RegisterPlayer(PlayerController player)
+    public void RegisterPlayer(PlayerController player, PlayerInventory inventory)
     {
         this.player = player;
-        hud.SetPlayer(player);
+        hud.SetPlayer(player, inventory);
+    }
+
+    public void PauseGame()
+    {
+        IsPaused = true;
+        print("paused");
+    }
+    public void UnpauseGame()
+    {
+        IsPaused = false;
     }
 }
