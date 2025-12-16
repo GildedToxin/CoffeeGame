@@ -1,8 +1,9 @@
 using NaughtyAttributes;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -44,6 +45,9 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Move.canceled += ctx => movement = Vector2.zero;
         controls.Gameplay.Pause.performed += ctx => GameManager.Instance.TogglePause();
         controls.Gameplay.Dash.performed += ctx => Dash();
+        controls.Gameplay.Use.performed += ctx => UseItem();
+        controls.Gameplay.Interact.performed += ctx => Interact();
+        controls.Gameplay.Interact.performed += ctx => Attack();
     }
     void Start()
     {
@@ -89,7 +93,18 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(DashCoroutine());
     }
+    private void UseItem()
+    {
 
+    }
+    private void Interact()
+    {
+
+    }
+    private void Attack()
+    {
+
+    }
     private IEnumerator DashCoroutine()
     {
         isDashing = true;
