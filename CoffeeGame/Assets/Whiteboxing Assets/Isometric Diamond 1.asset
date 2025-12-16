@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Isometric Diamond 1
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.38047346, g: 0.6845992, b: 0.8490566, a: 0.05490196}
   m_Transform:
     e00: 1
     e01: 0
