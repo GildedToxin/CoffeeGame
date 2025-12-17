@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -17,8 +18,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
-        //Cursor.visible = false;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         Cursor.lockState = CursorLockMode.Confined;
         
     }
@@ -50,8 +58,6 @@ public class GameManager : MonoBehaviour
         if (IsPaused)
         {
             isUIOpen = true;
-            EventSystem.current.SetSelectedGameObject(null); // clear old selection
-            EventSystem.current.SetSelectedGameObject(pauseMenu.resume.gameObject);
         }
     }
 
@@ -67,19 +73,12 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateDevice(InputModeType lastDevice, InputModeType currentDevice)
     {
-        if (isUIOpen)
-        {
-            if(currentDevice != InputModeType.Mouse)
-            {
-                //Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Confined;
-            }
-            else
-            {
-                print("Mouse is showing");
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-            }
-        }
+        Cursor.visible = currentDevice == InputModeType.Controller ? false : true;
+        pauseMenu.GetComponent<GraphicRaycaster>().enabled = currentDevice == InputModeType.Controller ? false : true;
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
