@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         
     }
     void Start()
@@ -60,8 +60,8 @@ public class GameManager : MonoBehaviour
         if (!isUIOpen)
             return;
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
 
         isUIOpen = false;
     }
@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
         {
             if(currentDevice != InputModeType.Mouse)
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Confined;
             }
             else
             {

@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Dash.performed += ctx => Dash();
         controls.Gameplay.Use.performed += ctx => UseItem();
         controls.Gameplay.Interact.performed += ctx => Interact();
-        controls.Gameplay.Interact.performed += ctx => Attack();
+        controls.Gameplay.Attack.performed += ctx => Attack();
     }
     void Start()
     {
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
         rb.MovePosition(targetPos);
         isDashing = false;
-        
+
     }
 
 }
