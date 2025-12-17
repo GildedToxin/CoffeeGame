@@ -5,9 +5,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+interface IInteractable {
+    public void Interact();
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+
+    [Header("Interact")]
+    private float interactRange = .25f;
+    public TMPro.TextMeshProUGUI interactText;
+
     [Header("Movement")]
     public bool canMove = true;
     public bool canDash = true;
@@ -62,6 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         controls.Gameplay.Disable();
     }
+
+    private void Update()
+    {
+        InteractText();
+    }
+
     private void FixedUpdate()
     {
         if (!canMove || isDashing) return;
@@ -74,6 +89,22 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("MoveY", movement.y);
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
+    }
+
+    private void InteractText()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange);
+        bool foundInteractable = false;
+        foreach (Collider2D hit in hits)
+        {
+            IInteractable interactable = hit.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                foundInteractable = true;
+                break;
+            }
+        }
+        interactText.gameObject.SetActive(foundInteractable);
     }
 
     [Button]
@@ -99,7 +130,26 @@ public class PlayerController : MonoBehaviour
     }
     private void Interact()
     {
-
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange);
+        float closestDistance = interactRange;
+        IInteractable closestInteractable = null;
+        foreach (Collider2D hit in hits)
+        {
+            IInteractable interactable = hit.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                float distance = Vector2.Distance(transform.position, hit.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestInteractable = interactable;
+                }
+            }
+        }
+        if (closestInteractable != null)
+        {
+            closestInteractable.Interact();
+        }
     }
     private void Attack()
     {
