@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public ItemData itemData;
+    public void Interact(PlayerInventory inventory)
     {
-        
-    }
+        Debug.Log("Player picked up" + gameObject.name);
 
-    // Update is called once per frame
-    void Update()
-    {
+        var isItemAdded = inventory.TryAddItem(itemData);
         
+        if(isItemAdded)
+            Destroy(gameObject);
     }
 }
