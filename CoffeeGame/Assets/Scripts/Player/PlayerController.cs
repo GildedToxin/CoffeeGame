@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 interface IInteractable {
-    public void Interact();
+    public void Interact(PlayerInventory inventory);
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interact")]
     private float interactRange = .25f;
-    public TMPro.TextMeshProUGUI interactText;
 
     [Header("Movement")]
     public bool canMove = true;
@@ -57,6 +56,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Use.performed += ctx => UseItem();
         controls.Gameplay.Interact.performed += ctx => Interact();
         controls.Gameplay.Attack.performed += ctx => Attack();
+        controls.Gameplay.Inventory.performed += ctx => ToggleInventory();
     }
     void Start()
     {
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-        interactText.gameObject.SetActive(foundInteractable);
+        GameManager.Instance.hud.interactText.gameObject.SetActive(foundInteractable);
     }
 
     [Button]
@@ -148,12 +148,15 @@ public class PlayerController : MonoBehaviour
         }
         if (closestInteractable != null)
         {
-            closestInteractable.Interact();
+            closestInteractable.Interact(inventory);
         }
     }
     private void Attack()
     {
 
+    }
+    private void ToggleInventory() {
+        inventory.ToggleInventory();
     }
     private IEnumerator DashCoroutine()
     {

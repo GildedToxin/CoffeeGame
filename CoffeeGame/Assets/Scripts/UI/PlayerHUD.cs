@@ -5,8 +5,9 @@ public class PlayerHUD : MonoBehaviour
 {
     private PlayerController player;
     private PlayerInventory inventory;
-    public GameObject HealthBar;
-    public GameObject Money;
+    public GameObject healthBar;
+    public GameObject money;
+    public TMPro.TextMeshProUGUI interactText;
 
     void Start()
     {
@@ -16,11 +17,11 @@ public class PlayerHUD : MonoBehaviour
 
     void UpdateHealth(float current, float max)
     {
-        HealthBar.GetComponent<UnityEngine.UI.Slider>().value = current / max;
+        healthBar.GetComponent<UnityEngine.UI.Slider>().value = current / max;
     }
     void UpdateMoney(int money)
     {
-        Money.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText($"{money}");
+        this.money.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText($"{money}");
     }
 
     void OnDestroy()

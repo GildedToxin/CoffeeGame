@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7243123458067394743}
   - component: {fileID: 6011098147812326755}
+  - component: {fileID: 4873865582961035422}
   m_Layer: 0
   m_Name: TestInteractable
   m_TagString: Untagged
@@ -170,3 +171,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4873865582961035422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6953467512236287168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1873c656c1a040a459116629518dc3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  itemData: {fileID: 11400000, guid: 1c85daa324eefa44bb64d725973d62e6, type: 2}

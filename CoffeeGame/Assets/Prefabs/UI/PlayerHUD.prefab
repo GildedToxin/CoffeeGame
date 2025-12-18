@@ -684,8 +684,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3af8c5b79751a240b298216e9b9054b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  HealthBar: {fileID: 4161699818584933134}
-  Money: {fileID: 6446926765975918660}
+  healthBar: {fileID: 4161699818584933134}
+  money: {fileID: 6446926765975918660}
+  interactText: {fileID: 6365509176984588647}
 --- !u!1 &8693141103388584875
 GameObject:
   m_ObjectHideFlags: 0

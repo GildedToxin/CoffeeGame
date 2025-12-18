@@ -27,4 +27,8 @@ public class InventoryUI : MonoBehaviour
         foreach (var slot in uiSlots)
             slot.Refresh();
     }
+    public void SetPlayer(PlayerInventory inventory)
+    {
+        this.inventory = inventory;
+    }
 }

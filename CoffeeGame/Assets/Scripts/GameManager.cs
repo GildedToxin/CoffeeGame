@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerHUD hud;
     public PauseMenu pauseMenu;
+    public InventoryUI inventoryUI;
     public PlayerController player;
     public InputMode inputMode;
     public bool isUIOpen;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         this.player = player;
         hud.SetPlayer(player, inventory);
+        inventoryUI.SetPlayer(inventory);
     }
     public void TogglePause()
     {

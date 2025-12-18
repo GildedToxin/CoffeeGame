@@ -7,7 +7,7 @@ public class InventorySlotUI : MonoBehaviour
     public Image icon;
     public TMP_Text countText;
 
-    InventorySlot slot;
+    public InventorySlot slot;
 
     public void Bind(InventorySlot newSlot)
     {

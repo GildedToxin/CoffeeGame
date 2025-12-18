@@ -49,11 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aaa4d50796c334eb3462adc2f8f747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  interactText: {fileID: 0}
   canMove: 1
   canDash: 1
   moveSpeed: 5
   dashDistance: 2
-  dashCooldown: 1
   animator: {fileID: 0}
   currentHealth: 0
   maxHealth: 100
@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8152e78a0e6c4f24598157bf8366f25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  size: 36
+  slots: []
+  isInventoryOpen: 0
 --- !u!50 &1128376579458014168
 Rigidbody2D:
   serializedVersion: 5

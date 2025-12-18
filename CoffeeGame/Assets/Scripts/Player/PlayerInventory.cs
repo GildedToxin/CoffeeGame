@@ -14,6 +14,7 @@ public class PlayerInventory : MonoBehaviour
 
     public Action OnInventoryChanged;
 
+    public bool isInventoryOpen = false;
 
     void Awake()
     {
@@ -74,5 +75,9 @@ public class PlayerInventory : MonoBehaviour
         money = Mathf.Clamp(money, 0, maxMoney);
         OnMoneyChanged?.Invoke(money);
     }
-
+    public void ToggleInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
+        GameManager.Instance.inventoryUI.gameObject.SetActive(isInventoryOpen);
+    }
 }

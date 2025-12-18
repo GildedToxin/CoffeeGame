@@ -79,7 +79,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Map",
+                    "name": "Inventory",
                     "type": "Button",
                     "id": "f2eb3ff4-2609-4b1e-b73d-b63199ced93b",
                     "expectedControlType": "",
@@ -371,7 +371,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Map",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -382,7 +382,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Map",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
