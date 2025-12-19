@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb531323cbf42744d8bf643a4b6aeee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueRunner
-  database: {fileID: 11400000, guid: 6ef27df0a5b5b084fafabf9e64bcc59b, type: 2}
+  database: {fileID: 11400000, guid: 802d844ad09cee74a826f962552a7a75, type: 2}
   dialogueText: {fileID: 1777749151}
   speakerText: {fileID: 2129415395}
 --- !u!1 &1057526830
