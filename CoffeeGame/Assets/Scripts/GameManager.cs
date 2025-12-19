@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public InputMode inputMode;
     public bool isUIOpen;
 
+    [Header("Dialogue References")]
+    public DialogueDatabase dialogueDB;
+    public DialogueRunner dialogueRunner;
+
     public static bool IsPaused { get; private set; }
 
 
