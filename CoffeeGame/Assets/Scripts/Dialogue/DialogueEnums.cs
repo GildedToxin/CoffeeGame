@@ -6,11 +6,18 @@ public enum SpeakerType
 
 public enum DialogueContext
 {
-    Order,
-    Reaction,
-    Purchase,
-    Greeting,
-    Farewell
+    // Customer
+    CustomerGreeting,
+    OrderServed,
+    OrderFailed,
+    CustomerReaction,
+
+    // Vendor
+    VendorGreeting,
+    VendorOpen,
+    VendorFarewell,
+
+    IdleChatter
 }
 
 public enum DialogueTier
@@ -23,9 +30,9 @@ public enum DialogueTier
 
 public enum DialogueQuality
 {
+    Any,
     Poor,
     Acceptable,
     Good,
-    Excellent,
-    Any
+    Excellent
 }

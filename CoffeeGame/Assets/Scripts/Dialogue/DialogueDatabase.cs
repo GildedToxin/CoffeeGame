@@ -6,22 +6,30 @@ public class DialogueDatabase : ScriptableObject
 {
     public List<DialogueLine> lines;
 
-    public DialogueLine GetRandomLine(
-        SpeakerType speaker,
-        DialogueContext context,
-        DialogueTier tier,
-        DialogueQuality quality = DialogueQuality.Any)
+    public DialogueLine GetRandomLine(SpeakerType speaker, DialogueContext context, DialogueTier tier)
     {
-        List<DialogueLine> valid = lines.FindAll(l =>
+        var matches = lines.FindAll(l =>
             l.speaker == speaker &&
             l.context == context &&
-            (tier == DialogueTier.Any || l.tier == tier) &&
-            (quality == DialogueQuality.Any || l.quality == quality)
+            (l.tier == tier || l.tier == DialogueTier.Any)
         );
 
-        if (valid.Count == 0)
+        if (matches.Count == 0)
             return null;
 
-        return valid[Random.Range(0, valid.Count)];
+        return matches[Random.Range(0, matches.Count)];
+    }
+
+    public DialogueLine GetLine(DialogueContext context, DialogueQuality quality = DialogueQuality.Any)
+    {
+        var matches = lines.FindAll(l =>
+            l.context == context &&
+            (l.quality == quality || l.quality == DialogueQuality.Any)
+        );
+
+        if (matches.Count == 0)
+            return null;
+
+        return matches[Random.Range(0, matches.Count)];
     }
 }
