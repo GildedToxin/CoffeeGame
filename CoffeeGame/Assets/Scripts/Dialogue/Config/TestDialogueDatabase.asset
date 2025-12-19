@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8673431173cff74408874e2f77d5a9c2, type: 3}
+  m_Name: TestDialogueDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueDatabase
+  lines:
+  - speaker: 0
+    context: 0
+    tier: 3
+    quality: 0
+    text: Hello, one coffee please
+    customerName: Customer
+  - speaker: 0
+    context: 1
+    tier: 3
+    quality: 0
+    text: Thanks dood
+    customerName: Customer
+  - speaker: 0
+    context: 2
+    tier: 3
+    quality: 0
+    text: FUCK YOU!!
+    customerName: Customer

@@ -18,24 +18,35 @@ public class DialogueRunner : MonoBehaviour
             Instance = this;
     }
 
-    public void Play(SpeakerType speaker, DialogueContext context, DialogueTier tier)
+    public void Play(SpeakerType speaker, DialogueContext context, DialogueTier tier, string customerName = "")
     {
         DialogueLine line = database.GetRandomLine(speaker, context, tier);
         if (line != null)
+        {
             dialogueText.text = line.text;
+            speakerText.text = speaker.ToString();
+        }
         else
+        {
             dialogueText.text = "[NO DIALOGUE FOUND]";
+            speakerText.text = "";
+        }
     }
 
-    public void Play(DialogueContext context, DialogueQuality quality)
+    public void Play(DialogueContext context, DialogueQuality quality, string customerName = "")
     {
         DialogueLine line = database.GetLine(context, quality);
         if (line != null)
+        {
             dialogueText.text = line.text;
+            speakerText.text = "Customer";
+        }
         else
+        {
             dialogueText.text = "[NO DIALOGUE FOUND]";
+            speakerText.text = "";
+        }
     }
-
     [Button]
     public void PlayTestDialogue()
     {
