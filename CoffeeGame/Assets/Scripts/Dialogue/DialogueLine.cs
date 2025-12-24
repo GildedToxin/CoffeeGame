@@ -8,4 +8,5 @@ public class DialogueLine
     public DialogueTier tier;         
     public DialogueQuality quality;  
     [TextArea] public string text;   //The dialogue content
+    public string customerName;
 }
