@@ -118,6 +118,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   slotPrefab: {fileID: 6816803151963573850, guid: 2e7543ba1370ccc418213678c8e983bd, type: 3}
   slotParent: {fileID: 7832376268671910254}
+  hoveredSlot: {fileID: 0}
 --- !u!1 &6554197611163240243
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 600}
+  m_SizeDelta: {x: 1100, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &785274995696608706
 CanvasRenderer:
@@ -207,14 +208,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 5
+    m_Right: 5
+    m_Top: 5
+    m_Bottom: 5
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 20, y: 20}
+  m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2

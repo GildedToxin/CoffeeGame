@@ -172,6 +172,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NavInventory"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1fd5f294-c703-496b-94b5-e195402cf94c"",
+                    ""expectedControlType"": ""Dpad"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -471,6 +480,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41501179-8c93-4fc4-9d7f-2c76360bf253"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -488,6 +508,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_AdvanceDialogue = m_Gameplay.FindAction("AdvanceDialogue", throwIfNotFound: true);
         m_Gameplay_Defend = m_Gameplay.FindAction("Defend", throwIfNotFound: true);
         m_Gameplay_Inventory = m_Gameplay.FindAction("Inventory", throwIfNotFound: true);
+        m_Gameplay_NavInventory = m_Gameplay.FindAction("NavInventory", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -577,6 +598,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_AdvanceDialogue;
     private readonly InputAction m_Gameplay_Defend;
     private readonly InputAction m_Gameplay_Inventory;
+    private readonly InputAction m_Gameplay_NavInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -624,6 +646,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Inventory".
         /// </summary>
         public InputAction @Inventory => m_Wrapper.m_Gameplay_Inventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/NavInventory".
+        /// </summary>
+        public InputAction @NavInventory => m_Wrapper.m_Gameplay_NavInventory;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -677,6 +703,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @NavInventory.started += instance.OnNavInventory;
+            @NavInventory.performed += instance.OnNavInventory;
+            @NavInventory.canceled += instance.OnNavInventory;
         }
 
         /// <summary>
@@ -715,6 +744,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @NavInventory.started -= instance.OnNavInventory;
+            @NavInventory.performed -= instance.OnNavInventory;
+            @NavInventory.canceled -= instance.OnNavInventory;
         }
 
         /// <summary>
@@ -818,5 +850,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NavInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNavInventory(InputAction.CallbackContext context);
     }
 }

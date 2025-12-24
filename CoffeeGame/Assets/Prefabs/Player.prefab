@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aaa4d50796c334eb3462adc2f8f747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  interactText: {fileID: 0}
   canMove: 1
   canDash: 1
   moveSpeed: 5
@@ -70,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8152e78a0e6c4f24598157bf8366f25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  size: 36
+  size: 30
   slots: []
   isInventoryOpen: 0
 --- !u!50 &1128376579458014168

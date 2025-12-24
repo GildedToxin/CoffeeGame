@@ -79,5 +79,13 @@ public class PlayerInventory : MonoBehaviour
     {
         isInventoryOpen = !isInventoryOpen;
         GameManager.Instance.inventoryUI.gameObject.SetActive(isInventoryOpen);
+        if (isInventoryOpen)
+        {
+            GameManager.Instance.OpenUI();
+        }
+        else
+        {
+            GameManager.Instance.CloseUI();
+        }
     }
 }

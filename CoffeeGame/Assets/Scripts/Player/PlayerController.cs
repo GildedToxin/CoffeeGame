@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Interact.performed += ctx => Interact();
         controls.Gameplay.Attack.performed += ctx => Attack();
         controls.Gameplay.Inventory.performed += ctx => ToggleInventory();
+        controls.Gameplay.NavInventory.performed += ctx => { 
+            if (GameManager.Instance.isUIOpen)
+                GameManager.Instance.inventoryUI.NavigateInventory(ctx); };
     }
     void Start()
     {

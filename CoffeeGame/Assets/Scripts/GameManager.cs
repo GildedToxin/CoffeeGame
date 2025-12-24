@@ -63,18 +63,22 @@ public class GameManager : MonoBehaviour
         }
         if (IsPaused)
         {
-            isUIOpen = true;
+            OpenUI();
         }
     }
 
+    public void OpenUI()
+    {
+        if (isUIOpen)
+            return;
+        isUIOpen = true;
+    }
     public void CloseUI()
     {
         if (!isUIOpen)
             return;
 
-        //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-
         isUIOpen = false;
     }
     public void UpdateDevice(InputModeType lastDevice, InputModeType currentDevice)
